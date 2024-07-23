@@ -25,7 +25,7 @@ import {
 } from "./main.js"
 export {
     //PRS
-    PRS_fun,
+    //PRS_fun,
     //23andMe
     getUserUrls,
     filterUrls,

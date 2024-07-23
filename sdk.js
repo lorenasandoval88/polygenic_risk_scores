@@ -21,7 +21,7 @@ import {
     Match2
 } from "./prs.js"
 import {
-    PRS_fun
+  //  PRS_fun
 } from "./main.js"
 export {
     //PRS

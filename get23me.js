@@ -77,6 +77,8 @@ async function parse23(txt, url) {
     return obj
 }
 async function get23(urls) {
+    console.log('urls',urls)
+
     let data = {}
     let arrUrls = []
     let arr23Txts = []
@@ -86,7 +88,11 @@ async function get23(urls) {
 
         if (user == null) {
             let url2 = 'https://corsproxy.io/?' + urls[i]
+            console.log('url2',url2)
+
             user = (await (await fetch(url2)).text())
+            // console.log('user',user)
+
             userTexts.setItem(urls[i], user);
         }
         //console.log('checking 23andMe file #', i, " ...  ", urls[i], )
@@ -95,6 +101,8 @@ async function get23(urls) {
             //console.log("This is a valid 23andMe file:", user.substring(0, 37))
             let parsedUser = await parse23(user, urls[i])
             arr23Txts.push(parsedUser)
+            console.log('parsedUser',parsedUser)
+
             arrUrls.push(urls[i])
         } else {
             //console.log("ERROR:This is NOT a valid 23andMe file:", user.substring(0, 37))

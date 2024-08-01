@@ -1,14 +1,256 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diseasome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom.css"> -->
+
+    <!-- bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.3/pako.min.js'></script>-->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/31149d48b0.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <!-- top banner -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+        <!-- <div id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a class="nav-link" href="#notices">Notices</a>
+        </div> -->
+
+
+        <div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#notices">Notices</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://github.com/episphere/diseasome">Github Code</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" target="_blank"
+                        href="https://observablehq.com/@lorenasandoval88/polygenic_risk_scores_sdk"
+                        target="_blank">Notebook</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://gitter.im/episphere/PRS">Discussion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="">
+                        <img style="vertical-align:top" src="youtube_img.png" width="20" height="20"></img> Tutorial</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- side panel ----------------------------------------------->
+    <section class="bgimage" id="home">
+        <div class="container-fluid">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 hero-text">
+                <h4 class="hero_title">Diseasome</h3>
+                    <p class="hero_desc">Calculation of multiple <a class="link-unstyled"
+                            href="https://www.nature.com/articles/nrg.2016.27" target="_blank"><u>risk profiles</u></a>
+                        for
+                        <br>23andme reports,using the <a class="link-unstyled" href='https://www.pgscatalog.org'
+                            target="_blank">PGS Catalog</a>.</p>
+                    <button class="glow-on-hover"
+                        onclick="location.href='https://observablehq.com/@lorenasandoval88/polygenic_risk_scores_sdk'"
+                        type="button">
+                        Get Started</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Tab content -->
+
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'PGS catalog')">PGS catalog</button>
+        <button class="tablinks" onclick="openCity(event, 'OpenSNP')">OpenSNP</button>
+        <button id = "prsButton" class="tablinks" onclick="openCity(event, 'PRS')">PRS</button>
+    </div>
+<div id = "selection"></div>
+
+
+    <!-- PRS ------------------------------------------>
+
+
+    <div id="PRS" class="tabcontent">
+        <h3>PRS</h3>
+        <p>A prototype personal risk score <a class="link-unstyled" href="https://episphere.github.io/prs"
+                target="_blank"> <u>calculator</u></a> , created for research purposes, was developed to demonstrate how
+            the PGS Catalog can be privately and readily applied to readily available direct-to-consumer genetic testing
+            services, such as 23andMe. No software download, installation, or configuration is needed. The PRS web
+            calculator matches individual PGS catalog entries with an individual's 23andMe genome data composed of 600k
+            to 1.4 M single-nucleotide polymorphisms (SNPs). Beta coefficients provide researchers with a convenient
+            assessment of risk associated with matched SNPs. This in-browser application was tested in a variety of
+            personal devices, including smartphones, establishing the feasibility of privately calculating personal risk
+            scores with up to a few thousand reference genetic variations and from the full 23andMe SNP data file
+            (compressed or not).</p>
+
+            <div id=prsDiv>prsDiv</div>
+            <div id=prsButton></div>
+            <!-- heatmap -->
+            <div id='container-id-1'>
+                <h1 class='wait_message'>Please wait ...</h1>
+            </div>
+
+
+    </div>
+
+
+
+    <!-- 23 and me ------------------------------------------>
+
+    <div id="OpenSNP" class="tabcontent">
+        <h3>OpenSNP</h3>
+        <p>OpenSNP.org is a repository to which users can upload their SNP-sets (and exome-VCFs) from a variety of
+            direct-to-consumer genetic testing brands including 23andMe.</p>
+
+        <h6 style="color: rgb(6, 137, 231);">Select an openSNP datatype below:</h6>
+
+        <div id=snp></div>
+        <div id="snpButton"></div>
+        <br>
+
+        <div style="position:relative;left:100px;bottom:0px;text-align:left">
+            <span style="font-size: 13pt;">OpenSNP phenotypes</span>
+        </div>
+        <div id=snpPheno></div>
+        <div id="snpPhenoButton"></div>
+        <div id=snpPhenoPie></div>
+        <div id=snpPhenoPieButton></div>
+    </div>
+
+    <!-- pgs scoring counts bar plot ----------------------------->
+    <div id="PGS catalog" class="tabcontent">
+
+        <h3>The Polygenic Score (PGS) Catalog</h3>
+        <p>The PGS Catalog is an open database of published polygenic scores (PGS), annotated with relevant metadata;
+            including scoring files (variants, effect alleles/weights).</p>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Categories', true)">Categories</button>
+            <button class="tablinks" onclick="openCity(event, 'Traits', true)">Traits</button>
+            <button class="tablinks" onclick="openCity(event, 'EFO_ids', true)">EFO_ids</button>
+
+        </div>
+
+            <!--  --------------------->
+
+        <div id="Categories" class="tabcontent">
+
+            <h6 style="color: rgb(6, 137, 231);">Select a PGS category below:</h6>
+            <div id="topBarCategories"></div>
+            <p id="description1" style="font-size:10px;color:blue"></p>
+
+            <div id="secondBarCategories"></div>
+            <div id="secondBarCategoriesButton"></div>
+
+            <div id="betasBarCategoriesButton"></div>
+            <div id="betasBarCategories"></div>
+            <!--  --------------------->
+
+            <br>
+            <h6 id="pieHeader"></h6>
+            <div class="spinner-border m-5" style="display: none;" role="status" id="spinner2">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
+            <div id="pgsPie"></div>
+            <div id="thirdBarCategories"></div>
+            <div id="thirdBarCategoriesButton"></div>
+
+            <div id="betasthirdBarCategoriesButton"></div>
+            <div id="betasthirdBarCategories"></div>
+
+            <div class="spinner-border m-5" role="status" id="spinner">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
+        </div>
+        <!--  --------------------->
+        <div id="Traits" class="tabcontent">
+            <h6 style="color: rgb(6, 137, 231);">Select a PGS category below:</h6>
+        <div id="topBarTraits"></div>
+        <div class="spinner-border m-5" style="display: none;" role="status" id="spinner3">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div id="secondBarTraits"></div>
+        <div id="secondBarTraitsButton"></div>
+
+        <div id="betassecondBarTraitsButton"></div>
+        <div id="betassecondBarTraits"></div>
+    </div>
+    </div>
+
+          <!--  --------------------->
+
+          <div id="EFO_ids" class="tabcontent">
+
+            <h6 style="color: rgb(6, 137, 231);">Select an EFO id below:</h6>
+            <div id="topBarEFO_ids"></div>
+            <p id="description1" style="font-size:10px;color:blue"></p>
+
+
+          </div>
+
+    <!-- scripts----------------------------------------------->
+
+  
+  
+  
+    <!-- Required JS Libraries -->
+    <script src="lib/js/d3.js"></script>
+    <script src="lib/js/jquery-1.11.2.min.js"></script>
+    <script src="lib/js/underscore-min.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+  
+
     <script type="module" src="main.js"></script>
     <script type="module" src="get23me.js"></script>
     <script type="module" src="getPgs.js"></script>
     <script type="module" src="prs.js"></script>
 
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>Testing promises for <strong>pgs catalog</strong> and <strong>23andMe</strong> data.</p>
-  </body>
-</html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js"></script>
+
+
+    <!-- Required JS Libraries -->
+<script src="lib/js/d3.js"></script>
+<script src="lib/js/jquery-1.11.2.min.js"></script>
+<script src="lib/js/underscore-min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+
+    <!-- privacy section-->
+    <section id="notices">
+        <span style="font-size:large;">Privacy:</span><br>
+        <span style="font-size:small;color:black;font-weight:normal">
+            All data and calculations take place in the browser. No data or calculations circulate by a server. This
+            application is, foremost, an exercise in privacy-preserving biomedical informatics for consumer genomics
+            data.
+        </span><br>
+        <span style="font-size:large;">Scope/Limitations:</span><br>
+        <span style="font-size:small;color:black;font-weight:normal">
+            This calculator was devised as an implementation proof of concept. It has a number of important
+            limitations
+            for epidemiology research and it does not meet criteria for clinical use. The current tool uses
+            pre-imputation genotype data and thus results in a low number of SNP matches. Most important, only the
+            relative risk model <a href='https://www.nature.com/articles/nrg.2016.27#Sec5' target="_blank">(Box 1,
+                eq
+                2)</a> is calculated, with no effort to determine absolute risk of disease. Finally, the risk
+            calculation will only be attempted for PGS catalog entries reporting effects as beta values under
+            "effect_weight".</span>
+    </section>
+
+
+</body>

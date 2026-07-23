@@ -4,5 +4,5 @@ export {
 	fetchAvailableDataTypes,
 	allUsersMetaDataByType_fast,
 	fetchProfile,
-	load23andMeFile
+	get23Txt
 } from "personal_genomes_project_sdk/cloud_sdk.mjs";

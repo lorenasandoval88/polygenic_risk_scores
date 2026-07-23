@@ -1,7 +1,7 @@
 import { getTxts } from "../sdk/pgsSdk.js";
 import {Match2 } from "../sdk/prs.js"
-// import { parsePGP23, load23andMeFile } from "../sdk/get23me.js";
-import { load23andMeFile } from "../sdk/pgpSdk.js";
+// import { parsePGP23, get23Txt } from "../sdk/get23me.js";
+import { get23Txt } from "../sdk/pgpSdk.js";
 import localforage from "localforage";
 console.log("calculatePrs.js loaded");
 
@@ -58,7 +58,7 @@ async function fetch23andMeFiles(paths, userIds = []) {
 		paths.map(async (path, idx) => {
 			try {
 				const userId = userIds[idx] ?? null;
-				const parsed = await load23andMeFile(path, userId);
+				const parsed = await get23Txt(path, userId);
 				console.log(`Loaded 23andMe file: ${path} (userId: ${userId})`);
 				return { userId, parsed };
 			} catch (err) {
@@ -446,7 +446,7 @@ const FALLBACK_SCORES = [
 function parsePGS(id, txt) {
 	const obj = { id };
 	obj.txt = txt;
-	const rows = txt.split(/[\r\n]/g);
+	const rows = txt.split(/\r\n|\r|\n/g); //const rows = txt.split(/[\r\n]/g);
 	const metaL = rows.filter(r => r[0] === '#').length;
 	obj.meta = { txt: rows.slice(0, metaL) };
 	
@@ -457,7 +457,7 @@ function parsePGS(id, txt) {
 		obj.dt = [];
 		return obj;
 	}
-	
+
 	obj.cols = rows[metaL].split(/\t/g);
 	obj.dt = rows.slice(metaL + 1).map(r => r.split(/\t/g)).filter(r => r.length > 1);
 	
@@ -628,8 +628,8 @@ console.log(`fetchUsers(): Selected user IDs from window.getSelectedUserIds():`,
 				return null;
 			}
 			try {
-				const parsed = await load23andMeFile(filePath, user.id);
-				// const parsed = await load23andMeFile(filePath, user.id);
+				const parsed = await get23Txt(filePath, user.id);
+				// const parsed = await get23Txt(filePath, user.id);
 				//console.log(`Parsed genome filePath:`, filePath, `for user:`, user.id);
 				return { user, parsed };
 			} catch (err) {
@@ -805,7 +805,7 @@ async function loadFallbackUsers() {
 			// Not cached - fetch and parse
 			if (statusEl) statusEl.textContent = `Fetching ${user.name || user.id}... (${idx + 1}/${toLoad.length})`;
 			console.log(`Fallback user NOT CACHED, Fetching genome for ${user.id} from filePath:`, filePath);
-			const parsed = await load23andMeFile(filePath);
+			const parsed = await get23Txt(filePath);
 			console.log(`Parsed genome filePath:`, filePath);
 
 			// Cache the result
@@ -1082,7 +1082,7 @@ async function calculatePRS() {
                 }
 
                 try {
-                    const parsed = await load23andMeFile(filePath, user.id);
+                    const parsed = await get23Txt(filePath, user.id);
                     return { user, parsed };
                 } catch (err) {
                     console.error(`Failed to load genome for ${user.id}:`, err);

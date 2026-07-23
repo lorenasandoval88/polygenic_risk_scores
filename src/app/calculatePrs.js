@@ -1001,7 +1001,7 @@ async function calculateAndCachePRS(mypgs, my23, userId, pgsId, userData) {
     const result = Match2(mypgs, my23);
 	// console.log("Match2 mypgs:", mypgs);
 	// console.log("Match2 my23:", my23);
-	console.log("Calculated PRS result:", result);
+	//console.log("Calculated PRS result:", result);
     const organizedData = organizeResultsByAllele(result, mypgs);
     
     const prsResult = {
@@ -1240,8 +1240,8 @@ async function calculatePRS() {
             window.invalidateClusterCache();
         }
         
-		const elapsedSeconds = ((performance.now() - timerStartMs) / 1000).toFixed(2);
-		if (statusEl) statusEl.textContent = `Completed! ${elapsedSeconds}s. ${prsResults.length} result(s) (${cachedCount} from cache, ${calculatedCount} calculated).`;
+		const elapsedSec = ((performance.now() - timerStartMs) / 1000).toFixed(2);
+		if (statusEl) statusEl.textContent = `Completed! ${elapsedSec}s. ${prsResults.length} result(s) (${cachedCount} from cache, ${calculatedCount} calculated).`;
         
         // Display results
         if (resultsDiv) {

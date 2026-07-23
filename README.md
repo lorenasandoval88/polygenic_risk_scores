@@ -94,7 +94,6 @@ polygenic_risk_scores/
 | `fetchProfile(id)` | Fetch a user profile |
 | `get23Txt(path, id, cache)` | Load and parse a 23andMe file |
 | `Match2(pgsTxt, my23Txt)` | Calculate PRS (2-input) |
-| `Match3(pgsTxt, my23Txt)` | Calculate PRS (3-input) |
 
 **SDK Availability:**
 - **Browser SDK (`sdk.mjs`)**: All functions above

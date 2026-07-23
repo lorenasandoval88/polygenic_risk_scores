@@ -5681,7 +5681,7 @@ function buildUserSnpGenotypeMatrix(rawResults, { mode = 'shared', missingValue 
     }
     const userData = userDataMap.get(userId);
 
-    // Preferred: result.results (new Match3 structure)
+    // Preferred: result.results (expanded result structure)
     if (Array.isArray(result.results)) {
       for (const item of result.results) {
         if (item.match !== true) continue;

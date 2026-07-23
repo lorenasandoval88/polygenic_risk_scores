@@ -16,8 +16,7 @@ export {
 } from "./pgs_node.js";
 
 export {
-  Match2,
-  Match3
+  Match2
 } from "./prs_node.js";
 
 // No browser-only code, no Plotly, no D3, no localforage, no window/document

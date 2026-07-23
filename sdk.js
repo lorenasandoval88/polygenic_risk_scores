@@ -17,7 +17,6 @@ import {
 
 import {
 	Match2,
-	Match3,
 } from "./src/sdk/prs.js";
 
 export const pgp = {
@@ -49,7 +48,6 @@ export async function getBrowserStorageInfo() {
 
 export const prs = {
 	Match2, // pgsTxt, my23Txt
-	Match3,  // pgsTxt, my23Txt
 };
 
 export { clustjs };

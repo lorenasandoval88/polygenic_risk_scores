@@ -1,4 +1,4 @@
-import { allUsersMetaDataByType_fast, load23andMeFile } from 'https://lorenasandoval88.github.io/personal_genomes_project_sdk/dist/sdk.mjs';
+import { allUsersMetaDataByType_fast, get23Txt } from 'https://lorenasandoval88.github.io/personal_genomes_project_sdk/dist/sdk.mjs';
 import { l as localforage } from '../app.mjs';
 import 'https://lorenasandoval88.github.io/pgs_catalog_sdk/dist/sdk.mjs';
 import 'https://lorenasandoval88.github.io/clustjs/dist/sdk.mjs';
@@ -837,9 +837,9 @@ if (my23Btn && my23FileInput) {
 			try {
 				const text = await file.text();
 
-				let parsed = await load23andMeFile(file);
+				let parsed = await get23Txt(file);
 				if (!parsed || !parsed.dt) {
-					throw new Error("load23andMeFile did not return expected parsed data structure.");
+					throw new Error("get23Txt did not return expected parsed data structure.");
 				}
 				parsed = {
 					cols: parsed.cols || [],
@@ -947,9 +947,9 @@ if (loadByUrlBtn) {
 		loadByUrlBtn.disabled = true;
 
 		try {
-			let parsed = await load23andMeFile(url, id, false);
+			let parsed = await get23Txt(url, id, false);
 			if (!parsed || !parsed.dt) {
-				throw new Error("load23andMeFile did not return expected parsed data.");
+				throw new Error("get23Txt did not return expected parsed data.");
 			}
 			// SDK returns: { url, finalUrl, filename, meta, cols, dt }.
 			// Prefer the inner filename (e.g. "hu..._genome_First_Last_v5_Full_....txt") for name/display,
@@ -1118,8 +1118,8 @@ async function computeV4V5Overlap() {
     const marikaUrl = 'data/PGP_huAE4518_genome_Marika_Forsythe_v4_Full_20240826181111.txt';
 
     const [joshuaParsed, marikaParsed] = await Promise.all([
-      load23andMeFile(joshuaUrl),
-      load23andMeFile(marikaUrl),
+      get23Txt(joshuaUrl),
+      get23Txt(marikaUrl),
     ]);
 
     const joshuaSet = getChrPosSet(joshuaParsed);

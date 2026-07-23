@@ -92,7 +92,7 @@ polygenic_risk_scores/
 | `fetchAvailableDataTypes()` | List available data types |
 | `allUsersMetaDataByType_fast()` | Get user metadata by type |
 | `fetchProfile(id)` | Fetch a user profile |
-| `load23andMeFile(path, id, cache)` | Load and parse a 23andMe file |
+| `get23Txt(path, id, cache)` | Load and parse a 23andMe file |
 | `Match2(pgsTxt, my23Txt)` | Calculate PRS (2-input) |
 | `Match3(pgsTxt, my23Txt)` | Calculate PRS (3-input) |
 

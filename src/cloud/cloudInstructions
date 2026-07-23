@@ -52,7 +52,7 @@ getTxts
 fetchAvailableDataTypes
 allUsersMetaDataByType_fast
 fetchProfile
-load23andMeFile
+get23Txt
 Match2
 4. Create package.json
 cat > package.json <<'EOF'
@@ -118,7 +118,7 @@ cloud_sdk.mjs	Node-safe SDK bundle used by index.js. It should export PGP, PGS, 
 package.json	Defines the Node.js project settings and dependencies, especially @google-cloud/storage.
 Dockerfile	Builds the container image that Cloud Run executes.
 
-Your uploaded index.js imports fetchAllScores, getTxts, fetchAvailableDataTypes, allUsersMetaDataByType_fast, fetchProfile, load23andMeFile, and Match2 from ./cloud_sdk.mjs. It also sets USER_LIMIT, PGS_LIMIT, and BATCH_SIZE from environment variables.
+Your uploaded index.js imports fetchAllScores, getTxts, fetchAvailableDataTypes, allUsersMetaDataByType_fast, fetchProfile, get23Txt, and Match2 from ./cloud_sdk.mjs. It also sets USER_LIMIT, PGS_LIMIT, and BATCH_SIZE from environment variables.
 
 Workflow
 

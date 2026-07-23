@@ -6,7 +6,7 @@ import {
   fetchAvailableDataTypes,
   allUsersMetaDataByType_fast,
   fetchProfile,
-  load23andMeFile,
+  get23Txt,
   Match2
 } from "./cloud_sdk.mjs";
 
@@ -115,7 +115,7 @@ async function loadOneUser(user, index, total) {
 
     const [profile, loaded23] = await Promise.all([
       fetchProfile(id),
-      load23andMeFile(user.downloadUrl, id, false)
+      get23Txt(user.downloadUrl, id, false)
     ]);
 
     const { parsed } = normalizeLoaded23andMe(loaded23);
@@ -166,7 +166,7 @@ async function loadOneUser(user, index, total) {
 
 //     const [profile, loaded23] = await Promise.all([
 //       fetchProfile(id),
-//       load23andMeFile(user.downloadUrl, id, false)
+//       get23Txt(user.downloadUrl, id, false)
 //     ]);
 
 //     const { parsed } = normalizeLoaded23andMe(loaded23);

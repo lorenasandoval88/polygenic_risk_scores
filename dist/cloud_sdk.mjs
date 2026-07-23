@@ -15081,9 +15081,9 @@ async function parse23Txt(txt, url) {
   return obj;
 }
 
-async function load23andMeFile(path, id = null) {
+async function get23Txt(path, id = null) {
   if (typeof path !== "string") {
-    throw new TypeError("load23andMeFile expects a URL/path string in the Node-safe SDK");
+    throw new TypeError("get23Txt expects a URL/path string in the Node-safe SDK");
   }
 
   if (!id) {
@@ -22645,5 +22645,5 @@ function Match2(mypgs, my23){
   return data2;
 }
 
-export { Match2, Match3, allUsersMetaDataByType_fast, fetchAllScores, fetchAvailableDataTypes, fetchProfile, fetchSomeScores, fetchTraits, getScoresPerCategory, getScoresPerTrait, getTxts, load23andMeFile };
+export { Match2, Match3, allUsersMetaDataByType_fast, fetchAllScores, fetchAvailableDataTypes, fetchProfile, fetchSomeScores, fetchTraits, get23Txt, getScoresPerCategory, getScoresPerTrait, getTxts };
 //# sourceMappingURL=cloud_sdk.mjs.map

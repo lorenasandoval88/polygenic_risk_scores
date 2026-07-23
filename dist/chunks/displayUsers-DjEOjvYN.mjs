@@ -1,4 +1,4 @@
-import { allUsersMetaDataByType_fast, fetch23andMeParticipants, load23andMeFile } from 'https://lorenasandoval88.github.io/personal_genomes_project_sdk/dist/sdk.mjs';
+import { allUsersMetaDataByType_fast, fetch23andMeParticipants, get23Txt } from 'https://lorenasandoval88.github.io/personal_genomes_project_sdk/dist/sdk.mjs';
 import { l as localforage } from '../app.mjs';
 import 'https://lorenasandoval88.github.io/pgs_catalog_sdk/dist/sdk.mjs';
 import 'https://lorenasandoval88.github.io/clustjs/dist/sdk.mjs';
@@ -646,8 +646,8 @@ if (my23Btn && my23FileInput) {
 				// Use parse23Txt from the SDK if available, otherwise fall back to local parser
 				let parsed;
 
-				if (typeof load23andMeFile === "function") {
-					parsed = await load23andMeFile(file);
+				if (typeof get23Txt === "function") {
+					parsed = await get23Txt(file);
 					if (parsed && parsed.dt) {
 						parsed = {
 							cols: parsed.cols || [],
@@ -655,7 +655,7 @@ if (my23Btn && my23FileInput) {
 							meta: parsed.meta || ""
 						};
 					} else {
-						throw new Error("load23andMeFile did not return expected parsed data structure.");
+						throw new Error("get23Txt did not return expected parsed data structure.");
 					}
 				} else if (typeof window.parse23Txt === "function") {
 					parsed = await window.parse23Txt(text);

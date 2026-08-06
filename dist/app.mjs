@@ -1,4 +1,4 @@
-import { getTxts } from 'https://lorenasandoval88.github.io/pgs_catalog_sdk/dist/sdk.mjs';
+import { getPgsTxt } from 'https://lorenasandoval88.github.io/pgs_catalog_sdk/dist/sdk.mjs';
 import { get23Txt } from 'https://lorenasandoval88.github.io/personal_genomes_project_sdk/dist/sdk.mjs';
 import { d3, hclust_plot } from 'https://lorenasandoval88.github.io/clustjs/dist/sdk.mjs';
 import * as webllm from 'https://esm.run/@mlc-ai/web-llm';
@@ -30,7 +30,7 @@ let localDataModuleLoaded = false;
 // the tab functionality.
 async function ensurePgsModuleLoaded() {
     if (!pgsModuleLoaded) {
-        await import('./chunks/displayScores-DZjSkUbi.mjs');
+        await import('./chunks/displayScores-CnOOOBqh.mjs');
         pgsModuleLoaded = true;
     }
 }
@@ -4245,7 +4245,7 @@ async function calculatePRS() {
                             console.log(`Loaded local PGS file: ${score.local_file}`);
                         } else {
                             // Fetch from remote
-                            const remote = await getTxts([score.id]);
+                            const remote = await getPgsTxt([score.id]);
                             pgsTxts.push(...remote);
                         }
                     } catch (err) {

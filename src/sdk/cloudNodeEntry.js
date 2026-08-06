@@ -12,7 +12,7 @@ export {
   fetchTraits,
   getScoresPerCategory,
   getScoresPerTrait,
-  getTxts
+  getPgsTxt
 } from "./pgs_node.js";
 
 export {

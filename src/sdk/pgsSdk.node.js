@@ -6,5 +6,5 @@ export {
 	fetchTraits,
 	getScoresPerTrait,
 	getScoresPerCategory,
-	getTxts
+	getTxts as getPgsTxt
 } from "pgs_catalog_sdk";

@@ -2,7 +2,7 @@ import { Storage } from "@google-cloud/storage";
 
 import {
   fetchAllScores,
-  getTxts,
+  getPgsTxt,
   fetchAvailableDataTypes,
   allUsersMetaDataByType_fast,
   fetchProfile,
@@ -293,7 +293,7 @@ for (let i = 0; i < selectedIds.length; i++) {
   console.log(`FETCHING PGS scoring file from PGS Catalog/EBI: ${id}`);
 
   try {
-    const fetched = await getTxts([id]);
+    const fetched = await getPgsTxt([id]);
 
     const txtObj = Array.isArray(fetched)
       ? fetched[0]
@@ -331,7 +331,7 @@ return models;
 }
 //   console.log(`Fetching first ${selectedIds.length} PGS scoring files: ${selectedIds.join(", ")}`);
 
-//   const txts = await getTxts(selectedIds);
+//   const txts = await getPgsTxt(selectedIds);
 
 //   await saveJson(`${BASE_PATH}/manifests/selected_pgs_models.json`, selectedScores);
 

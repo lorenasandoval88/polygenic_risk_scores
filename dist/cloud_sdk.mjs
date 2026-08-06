@@ -22524,5 +22524,5 @@ function Match2(mypgs, my23){
   return data2
   }
 
-export { Match2, allUsersMetaDataByType_fast, fetchAllScores, fetchAvailableDataTypes, fetchProfile, fetchSomeScores, fetchTraits, get23Txt, getScoresPerCategory, getScoresPerTrait, getTxts };
+export { Match2, allUsersMetaDataByType_fast, fetchAllScores, fetchAvailableDataTypes, fetchProfile, fetchSomeScores, fetchTraits, get23Txt, getTxts as getPgsTxt, getScoresPerCategory, getScoresPerTrait };
 //# sourceMappingURL=cloud_sdk.mjs.map

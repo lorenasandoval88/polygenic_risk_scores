@@ -1,4 +1,4 @@
-import { fetchAllScores, fetchSomeScores, getScoresPerTrait, getScoresPerCategory, fetchTraits, getTxts } from "../sdk/pgsSdk.js";
+import { fetchAllScores, fetchSomeScores, getScoresPerTrait, getScoresPerCategory, fetchTraits, getPgsTxt } from "../sdk/pgsSdk.js";
 
 /*
  Module: displayScores.js
@@ -732,7 +732,7 @@ async function fetchScoresTxts() {
 		
 		// Fetch PGS text files using the SDK
 		//console.log(`Fetching ${selectedIds.length} PGS files:`, selectedIds);
-		const pgsTxts = await getTxts(selectedIds);
+		const pgsTxts = await getPgsTxt(selectedIds);
 		
 		window.loadedPgsTxts = pgsTxts;
 		console.log(`\n=== Results saved to window.loadedPgsTxts ===`);

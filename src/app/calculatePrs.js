@@ -1,4 +1,4 @@
-import { getTxts } from "../sdk/pgsSdk.js";
+import { getPgsTxt } from "../sdk/pgsSdk.js";
 import {Match2 } from "../sdk/prs.js"
 // import { parsePGP23, get23Txt } from "../sdk/get23me.js";
 import { get23Txt } from "../sdk/pgpSdk.js";
@@ -1197,7 +1197,7 @@ async function calculatePRS() {
                             console.log(`Loaded local PGS file: ${score.local_file}`);
                         } else {
                             // Fetch from remote
-                            const remote = await getTxts([score.id]);
+                            const remote = await getPgsTxt([score.id]);
                             pgsTxts.push(...remote);
                         }
                     } catch (err) {

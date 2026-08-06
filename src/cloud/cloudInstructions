@@ -20,7 +20,7 @@ Open the Cloud Shell editor:
 
 cloudshell edit index.js
 
-Paste the index.js code you uploaded. It imports fetchAllScores, getTxts, PGP functions, and Match2 from ./cloud_sdk.mjs, then runs the full workflow:
+Paste the index.js code you uploaded. It imports fetchAllScores, getPgsTxt, PGP functions, and Match2 from ./cloud_sdk.mjs, then runs the full workflow:
 
 PGP users → 23andMe files → PGS models → PRS results → GCS
 
@@ -48,7 +48,7 @@ node -e "import('./cloud_sdk.mjs').then(m => console.log(Object.keys(m))).catch(
 You should see exports like:
 
 fetchAllScores
-getTxts
+getPgsTxt
 fetchAvailableDataTypes
 allUsersMetaDataByType_fast
 fetchProfile
@@ -118,7 +118,7 @@ cloud_sdk.mjs	Node-safe SDK bundle used by index.js. It should export PGP, PGS, 
 package.json	Defines the Node.js project settings and dependencies, especially @google-cloud/storage.
 Dockerfile	Builds the container image that Cloud Run executes.
 
-Your uploaded index.js imports fetchAllScores, getTxts, fetchAvailableDataTypes, allUsersMetaDataByType_fast, fetchProfile, get23Txt, and Match2 from ./cloud_sdk.mjs. It also sets USER_LIMIT, PGS_LIMIT, and BATCH_SIZE from environment variables.
+Your uploaded index.js imports fetchAllScores, getPgsTxt, fetchAvailableDataTypes, allUsersMetaDataByType_fast, fetchProfile, get23Txt, and Match2 from ./cloud_sdk.mjs. It also sets USER_LIMIT, PGS_LIMIT, and BATCH_SIZE from environment variables.
 
 Workflow
 
@@ -177,7 +177,7 @@ Key steps inside index.js
 
 The script first checks the available PGP data types, then fetches all 23andMe participant metadata. It limits the number of users with USER_LIMIT, then loads each user’s profile and genotype data in batches.
 
-It then fetches all PGS Catalog score metadata, selects the first PGS_LIMIT scores, downloads their scoring files with getTxts, and saves both metadata and parsed score files to GCS.
+It then fetches all PGS Catalog score metadata, selects the first PGS_LIMIT scores, downloads their scoring files with getPgsTxt, and saves both metadata and parsed score files to GCS.
 
 Finally, it creates every user × PGS pair and runs:
 

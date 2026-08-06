@@ -11,7 +11,7 @@ import {
 	fetchTraits,
 	getScoresPerTrait,
 	getScoresPerCategory,
-	getTxts,
+	getPgsTxt,
 	estimateLocalForageSizeKB, checkStorageKB, getTextSizeKB
 } from "./src/sdk/pgsSdk.js";
 
@@ -33,7 +33,7 @@ export const pgs = {
 	fetchTraits,
 	getScoresPerTrait,
 	getScoresPerCategory,
-	getTxts,
+	getPgsTxt,
 	estimateLocalForageSizeKB, checkStorageKB, getTextSizeKB
 };
 

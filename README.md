@@ -27,7 +27,7 @@ This toolkit enables:
 ```js
 // ESM direct import (browser)
 const sdk = await import("https://lorenasandoval88.github.io/polygenic_risk_scores/dist/sdk.mjs");
-// or via npm: import { fetchAllScores, fetchTraits, getTxts } from "polygenic_risk_scores";
+// or via npm: import { fetchAllScores, fetchTraits, getPgsTxt } from "polygenic_risk_scores";
 ```
 
 ### Node/Cloud Run SDK
@@ -85,7 +85,7 @@ polygenic_risk_scores/
 | `fetchTraits()` | Fetch trait metadata |
 | `getScoresPerTrait()` | Get scores grouped by trait |
 | `getScoresPerCategory()` | Get scores grouped by category |
-| `getTxts(ids)` | Fetch and parse PGS text files |
+| `getPgsTxt(ids)` | Fetch and parse PGS text files |
 | `estimateLocalForageSizeKB()` | Estimate LocalForage storage size (Browser only) |
 | `checkStorageKB()` | Check storage usage and quota (Browser only) |
 | `getTextSizeKB(text)` | Calculate text size in KB (Browser only) |
@@ -104,11 +104,11 @@ polygenic_risk_scores/
 ## Usage Example
 
 ```js
-import { fetchAllScores, fetchTraits, getTxts } from "polygenic_risk_scores";
+import { fetchAllScores, fetchTraits, getPgsTxt } from "polygenic_risk_scores";
 
 const scores = await fetchAllScores();
 const traits = await fetchTraits();
-const txts = await getTxts(["PGS000001"]);
+const txts = await getPgsTxt(["PGS000001"]);
 ```
 
 ---

@@ -2973,7 +2973,7 @@ const pgs = {
 	fetchTraits,
 	getScoresPerTrait,
 	getScoresPerCategory,
-	getTxts,
+	getPgsTxt: getTxts,
 	estimateLocalForageSizeKB, checkStorageKB, getTextSizeKB
 };
 
